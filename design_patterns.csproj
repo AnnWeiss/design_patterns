@@ -79,7 +79,7 @@
     </Compile>
     <Compile Include="IMatrix.cs" />
     <Compile Include="IVector.cs" />
-    <Compile Include="Renumbering.cs" />
+    <Compile Include="Renumbering_Decorator.cs" />
     <Compile Include="Visualisation.cs" />
     <Compile Include="MatrixInitiator.cs" />
     <Compile Include="MatrixStatistics.cs" />

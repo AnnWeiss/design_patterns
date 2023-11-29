@@ -6,24 +6,25 @@ using System.Threading.Tasks;
 
 namespace design_patterns
 {
-    class Renumbering : IMatrix //decorator
+    class Renumbering_Decorator : IMatrix 
     {
         int _colsCount, _rowsCount;
         SomeMatrix smatrix;
         int[] rows, cols;
-        IVisualisation visualisation;
+        IVisualisation _visualisation;
+        public IVisualisation visualisation { get => _visualisation; set => _visualisation = value; }
         public int colsCount { get => _colsCount; }
         public int rowsCount { get => _rowsCount; }
-        public int this[int row, int col]
+        public int this[int j, int i]
         {
-            get => smatrix._vectors[row][col];
-            set => smatrix._vectors[row][col] = value;
+            get => smatrix[rows[j], cols[i]];
+            set => smatrix[rows[j], cols[i]] = value;
         }
-        public Renumbering(SomeMatrix smatrix)
+        public Renumbering_Decorator(IMatrix smatrix)
         {
             cols = new int[smatrix.colsCount];
             rows = new int[smatrix.rowsCount];
-            this.smatrix = smatrix;
+            this.smatrix = (SomeMatrix)smatrix;
             for (int i = 0; i < rows.Length; i++)
             {
                 rows[i] = i;
@@ -32,8 +33,10 @@ namespace design_patterns
             {
                 cols[i] = i;
             }
+            RenumberRows();
+            RenumberCols();
         }
-        public void RenumberRows()
+        private void RenumberRows()
         {
             Random rnd = new Random();
             int first = rnd.Next(0, rows.Length - 1);
@@ -47,7 +50,7 @@ namespace design_patterns
             rows[first] = rows[second];
             rows[second] = tmp;
         }
-        public void RenumberCols()
+        private void RenumberCols()
         {
             Random rnd = new Random();
             int first = rnd.Next(0, rows.Length - 1);
@@ -61,25 +64,9 @@ namespace design_patterns
             cols[first] = cols[second];
             cols[second] = tmp;
         }
-        public void setDrawer(IVisualisation visualisation)
+        public void Draw()
         {
-            this.visualisation = visualisation;
+            Drawer.DrawMatrixAlgo(visualisation, this);
         }
-        public void DrawMe()
-        {
-            smatrix.visualisation = visualisation;
-            RefreshArea();
-            DrawBorder(cols.Length, rows.Length);
-            for (int i = 0; i < cols.Length; i++)
-            {
-                for (int j = 0; j < rows.Length; j++)
-                {
-                    DrawVals(this[i, j], i, j, rows.Length);
-                }
-            }
-        }
-        private void RefreshArea() => visualisation.RefreshArea();
-        private void DrawVals(int val, int i, int j, int rowsCount) => visualisation.DrawVals(val, i, j, rowsCount);
-        private void DrawBorder(int colsCount, int rowsCount) => visualisation.DrawBorder(colsCount, rowsCount);
     }
 }

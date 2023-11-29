@@ -12,8 +12,7 @@ namespace design_patterns
 {
     public partial class MenuForm : Form
     {
-        SomeMatrix matrx;
-        FormDraw frm = new FormDraw();
+        IMatrix matrx;
         public MenuForm()
         {
             InitializeComponent();
@@ -67,7 +66,10 @@ namespace design_patterns
 
         private void buttonRenum_Click(object sender, EventArgs e)
         {
-            //matrx = new Renumbering(new Renumbering(matrx));
+            //декорирование 2 раза
+            matrx = new Renumbering_Decorator(new Renumbering_Decorator(matrx));
+
+            matrx.Draw();
         }
     }
 }

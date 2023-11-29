@@ -14,7 +14,6 @@ namespace design_patterns
         public IVisualisation visualisation { get => _visualisation; set => _visualisation = value; }
         public int colsCount { get => _colsCount; }
         public int rowsCount { get => _rowsCount; }
-        public IVector[] _vectors { get => vectors; }
         public int this[int row, int col] 
         { 
             get => vectors[row][col]; 
@@ -32,22 +31,9 @@ namespace design_patterns
             this.visualisation = visualisation;
         }
         public abstract IVector create(int size);
-        private void DrawVals(int val, int i ,int j, int rowsCount) => visualisation.DrawVals(val,i, j,rowsCount);
-
-        private void DrawBorder(int n, int m) => visualisation.DrawBorder(n,m);
-        private void RefreshArea() => visualisation.RefreshArea();
         public void Draw()
         {
-            //сделать вывод в текст файл
-            RefreshArea();
-            DrawBorder(colsCount, rowsCount);
-            for (int i = 0; i < colsCount; i++)
-            {
-                for (int j = 0; j < rowsCount; j++)
-                {
-                    DrawVals(this[i,j],i,j,rowsCount);
-                }
-            }
+            Drawer.DrawMatrixAlgo(visualisation, this);
         }
     }
     class RegularMatrix : SomeMatrix

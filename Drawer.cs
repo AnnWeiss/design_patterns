@@ -8,18 +8,17 @@ namespace design_patterns
 {
     class Drawer
     {
-        public static void Draw()
+        public static void DrawMatrixAlgo(IVisualisation visualisation, IMatrix mtrx)
         {
-            //сделать вывод в текст файл
-            //RefreshArea();
-            //DrawBorder(colsCount, rowsCount);
-            //for (int i = 0; i < colsCount; i++)
-            //{
-            //    for (int j = 0; j < rowsCount; j++)
-            //    {
-            //        DrawVals(this[i, j], i, j, rowsCount);
-            //    }
-            //}
+            visualisation.RefreshArea();
+            visualisation.DrawBorder(mtrx.colsCount, mtrx.rowsCount);
+            for (int i = 0; i < mtrx.colsCount; i++)
+            {
+                for (int j = 0; j < mtrx.rowsCount; j++)
+                {
+                    visualisation.DrawVals(mtrx[i,j], i, j, mtrx.rowsCount);
+                }
+            }
         }
     }
 }

@@ -21,5 +21,11 @@ namespace design_patterns
             get;
             set;
         }
+        IVisualisation visualisation
+        {
+            get;
+            set;
+        }
+        void Draw();
     }
 }
