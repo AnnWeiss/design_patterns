@@ -70,6 +70,7 @@
     <Compile Include="FormDraw.Designer.cs">
       <DependentUpon>FormDraw.cs</DependentUpon>
     </Compile>
+    <Compile Include="HorizontalMatrices.cs" />
     <Compile Include="IDrawable.cs" />
     <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>

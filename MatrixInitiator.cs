@@ -12,13 +12,13 @@ namespace design_patterns
        {
             Random rnd = new Random();
             int curCount = 0;
-            if (nonZeroCount > matrix.rowsCount * matrix.colsCount)
+            if (nonZeroCount > matrix.RowsCount * matrix.ColsCount)
             {
                 throw new Exception("Число элементов больше числа элементов в матрице!");
             }
-            for (int i = 0; i < matrix.rowsCount; i++)
+            for (int i = 0; i < matrix.RowsCount; i++)
             {
-                for (int j = 0; j < matrix.colsCount; j++)
+                for (int j = 0; j < matrix.ColsCount; j++)
                 {
                     curCount++;
                     if (curCount > nonZeroCount) { return; }

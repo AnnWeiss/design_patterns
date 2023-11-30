@@ -11,12 +11,12 @@ namespace design_patterns
         public static void DrawMatrixAlgo(IVisualisation visualisation, IMatrix mtrx)
         {
             visualisation.RefreshArea();
-            visualisation.DrawBorder(mtrx.colsCount, mtrx.rowsCount);
-            for (int i = 0; i < mtrx.colsCount; i++)
+            visualisation.DrawBorder(mtrx.ColsCount, mtrx.RowsCount);
+            for (int i = 0; i < mtrx.ColsCount; i++)
             {
-                for (int j = 0; j < mtrx.rowsCount; j++)
+                for (int j = 0; j < mtrx.RowsCount; j++)
                 {
-                    visualisation.DrawVals(mtrx[i,j], i, j, mtrx.rowsCount);
+                    visualisation.DrawVals(mtrx[i,j], i, j, mtrx.RowsCount);
                 }
             }
         }

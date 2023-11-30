@@ -8,24 +8,25 @@ namespace design_patterns
 {
     interface IMatrix
     {
-        int colsCount
+        int ColsCount
         {
             get;
         }
-        int rowsCount
+        int RowsCount
         {
             get;
         }
-        int this[int row, int col] //индексирование
+        int this[int row, int col] 
         {
             get;
             set;
         }
-        IVisualisation visualisation
+        IVisualisation Visualisation
         {
             get;
             set;
         }
         void Draw();
+        IMatrix ReturnBase();
     }
 }

@@ -8,23 +8,21 @@ namespace design_patterns
 {
     class Renumbering_Decorator : IMatrix 
     {
-        int _colsCount, _rowsCount;
-        SomeMatrix smatrix;
+        IMatrix matrix;
         int[] rows, cols;
-        IVisualisation _visualisation;
-        public IVisualisation visualisation { get => _visualisation; set => _visualisation = value; }
-        public int colsCount { get => _colsCount; }
-        public int rowsCount { get => _rowsCount; }
+        public IVisualisation Visualisation { get => Visualisation; set => Visualisation = value; }
+        public int ColsCount { get => ColsCount; }
+        public int RowsCount { get => RowsCount; }
         public int this[int j, int i]
         {
-            get => smatrix[rows[j], cols[i]];
-            set => smatrix[rows[j], cols[i]] = value;
+            get => matrix[rows[j], cols[i]];
+            set => matrix[rows[j], cols[i]] = value;
         }
-        public Renumbering_Decorator(IMatrix smatrix)
+        public Renumbering_Decorator(IMatrix matrix)
         {
-            cols = new int[smatrix.colsCount];
-            rows = new int[smatrix.rowsCount];
-            this.smatrix = (SomeMatrix)smatrix;
+            cols = new int[matrix.ColsCount];
+            rows = new int[matrix.RowsCount];
+            this.matrix = matrix;
             for (int i = 0; i < rows.Length; i++)
             {
                 rows[i] = i;
@@ -66,7 +64,11 @@ namespace design_patterns
         }
         public void Draw()
         {
-            Drawer.DrawMatrixAlgo(visualisation, this);
+            Drawer.DrawMatrixAlgo(Visualisation, this);
+        }
+        public IMatrix ReturnBase()
+        {
+            return matrix;
         }
     }
 }

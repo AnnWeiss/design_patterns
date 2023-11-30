@@ -16,9 +16,9 @@ namespace design_patterns
         public int SumValues() 
         {
             int sum = 0;
-            for (int i = 0; i < matrix.rowsCount; i++)
+            for (int i = 0; i < matrix.RowsCount; i++)
             {
-                for (int j = 0; j < matrix.colsCount; j++)
+                for (int j = 0; j < matrix.ColsCount; j++)
                 {
                     sum += matrix[i,j];
                 }
@@ -28,21 +28,21 @@ namespace design_patterns
         public double AvgValue() 
         {
             int sum = 0;
-            for (int i = 0; i < matrix.rowsCount; i++)
+            for (int i = 0; i < matrix.RowsCount; i++)
             {
-                for (int j = 0; j < matrix.colsCount; j++)
+                for (int j = 0; j < matrix.ColsCount; j++)
                 {
                     sum += matrix[i,j];
                 }
             }
-            return sum/matrix.rowsCount*matrix.colsCount;
+            return sum/matrix.RowsCount*matrix.ColsCount;
         }
         public int MaxValue() 
         {
             int max = 0;
-            for (int i = 0; i < matrix.rowsCount; i++)
+            for (int i = 0; i < matrix.RowsCount; i++)
             {
-                for (int j = 0; j < matrix.colsCount; j++)
+                for (int j = 0; j < matrix.ColsCount; j++)
                 {
                     if(matrix[i,j] > max)
                     {
@@ -55,9 +55,9 @@ namespace design_patterns
         public int NonZeroCount() 
         {
             int count = 0;
-            for (int i = 0; i < matrix.rowsCount; i++)
+            for (int i = 0; i < matrix.RowsCount; i++)
             {
-                for (int j = 0; j < matrix.colsCount; j++)
+                for (int j = 0; j < matrix.ColsCount; j++)
                 {
                     if (matrix[i,j] != 0)
                     {
