@@ -25,13 +25,13 @@ namespace design_patterns
                 {
                     return 0;
                 }
-                IMatrix im = matrices[numOfMatrx];
+                var im = matrices[numOfMatrx];
                 return im[row, col];
             }
             set
             {
                 int numOfMatrx = colMembership[col];
-                IMatrix im = matrices[numOfMatrx];
+                var im = matrices[numOfMatrx];
                 if (matrices[numOfMatrx].RowsCount - 1 < row)
                 {
                     throw new Exception("запрос не соответствует существующему элементу!");
@@ -57,14 +57,16 @@ namespace design_patterns
         }
         public void AddTransposeMatrix(IMatrix matrx)
         {
+            matrx = new Transpose_Decorator(matrx);
+            matrices.Add(matrx);
+
             RowsCount += matrx.RowsCount;
+
             for (int i = ColsCount; i < matrx.ColsCount; i++)
             {
                 colMembership.Add(i, matrices.Count - 1);
                 ColsCount += i;
             }
-            matrx = new Transpose_Decorator(matrx);
-            matrices.Add(matrx);
         }
         public void Draw()
         {
@@ -73,6 +75,16 @@ namespace design_patterns
         public IMatrix ReturnBase()
         {
             return this;
+        }
+        public int GetMaxRows()
+        {
+            var maxRows = matrices.Max(r => r.RowsCount);
+            return maxRows;
+        }
+        public int GetSumCols()
+        {
+            var sumCols = matrices.Sum(r => r.ColsCount);
+            return sumCols;
         }
     }
 }

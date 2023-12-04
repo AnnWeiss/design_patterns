@@ -30,6 +30,17 @@ namespace design_patterns
         private void MenuForm_Load(object sender, EventArgs e) { }
         private void buttonCons_Click(object sender, EventArgs e)
         {
+            RegularMatrix matrx1 = new RegularMatrix(1, 3, new VisualInConsole());
+            MatrixInitiator.FillMatrix(matrx, matrx.RowsCount * matrx.ColsCount, 20);
+
+            RegularMatrix matrx2 = new RegularMatrix(2, 2, new VisualInConsole());
+            MatrixInitiator.FillMatrix(matrx, matrx.RowsCount * matrx.ColsCount, 20);
+
+            Vertical_Matrices vm = new Vertical_Matrices();
+            vm.AddTransposeMatrix(matrx1);
+            vm.AddMatrix(matrx2);
+            vm[0, 0] = 1;
+
             matrx.Visualisation = new VisualInConsole(false, true);
             if (checkBox1.Checked)
             {

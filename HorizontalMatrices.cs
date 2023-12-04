@@ -25,13 +25,13 @@ namespace design_patterns
                 {
                     return 0;
                 }
-                IMatrix im = matrices[numOfMatrx];
+                var im = matrices[numOfMatrx];
                 return im[row, col];
             }
             set
             {
                 int numOfMatrx = colMembership[col];
-                IMatrix im = matrices[numOfMatrx];
+                var im = matrices[numOfMatrx];
                 if (matrices[numOfMatrx].RowsCount - 1 < row)
                 {
                     throw new Exception("запрос не соответствует существующему элементу!");
