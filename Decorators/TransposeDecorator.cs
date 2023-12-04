@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace design_patterns
 {
-    class Transpose_Decorator : IMatrix
+    class TransposeDecorator : IMatrix
     {
         IMatrix matrix;
         public IVisualisation Visualisation { get; set; }
@@ -17,9 +17,11 @@ namespace design_patterns
             get => matrix[i, j];
             set => matrix[i, j] = value;
         }
-        public Transpose_Decorator(IMatrix matrix)
+        public TransposeDecorator(IMatrix matrix)
         {
             this.matrix = matrix;
+            ColsCount = matrix.RowsCount;
+            RowsCount = matrix.ColsCount;
         }
         public void Draw()
         {

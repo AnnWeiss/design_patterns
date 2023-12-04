@@ -47,12 +47,17 @@ namespace design_patterns
         public void AddMatrix(IMatrix matrx)
         {
             matrices.Add(matrx);
-            RowsCount += matrx.RowsCount;
+
+            if(RowsCount < matrx.RowsCount)
+            {
+                int addRows = matrx.RowsCount - RowsCount;
+                RowsCount += addRows;
+            }
 
             for (int i = ColsCount; i < matrx.ColsCount; i++)
             {
                 colMembership.Add(i, matrices.Count - 1);
-                ColsCount += i;
+                ColsCount += 1;
             }
         }
         public void Draw()
@@ -67,11 +72,6 @@ namespace design_patterns
         {
             var maxRows = matrices.Max(r => r.RowsCount);
             return maxRows;
-        }
-        public int GetSumCols()
-        {
-            var sumCols = matrices.Sum(r => r.ColsCount);
-            return sumCols;
         }
     }
 }

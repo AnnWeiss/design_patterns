@@ -36,7 +36,7 @@ namespace design_patterns
             RegularMatrix matrx2 = new RegularMatrix(2, 2, new VisualInConsole());
             MatrixInitiator.FillMatrix(matrx, matrx.RowsCount * matrx.ColsCount, 20);
 
-            Vertical_Matrices vm = new Vertical_Matrices();
+            VerticalMatrices vm = new VerticalMatrices();
             vm.AddTransposeMatrix(matrx1);
             vm.AddMatrix(matrx2);
             vm[0, 0] = 1;
@@ -79,7 +79,7 @@ namespace design_patterns
         {
             //декорирование 2 раза
             //matrx = new Renumbering_Decorator(new Renumbering_Decorator(matrx));
-            matrx = new Renumbering_Decorator(matrx);
+            matrx = new RenumberingDecorator(matrx);
         }
     }
 }

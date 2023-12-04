@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace design_patterns
 {
-    class Renumbering_Decorator : IMatrix 
+    class RenumberingDecorator : IMatrix 
     {
         IMatrix matrix;
         Random rnd;
@@ -20,7 +20,7 @@ namespace design_patterns
             get => matrix[rows[j], cols[i]];
             set => matrix[rows[j], cols[i]] = value;
         }
-        public Renumbering_Decorator(IMatrix matrix)
+        public RenumberingDecorator(IMatrix matrix)
         {
             cols = new int[matrix.ColsCount];
             rows = new int[matrix.RowsCount];

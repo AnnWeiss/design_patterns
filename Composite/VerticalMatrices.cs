@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace design_patterns
 {
-    class Vertical_Matrices : IMatrix
+    class VerticalMatrices : IMatrix
     {
         List<IMatrix> matrices;
         public IVisualisation Visualisation { get; set; }
 
-        //принадлежность столбца к определенной матрице
-        Dictionary<int, int> colMembership;
+        //принадлежность ячейки к определенной матрице
+        Dictionary<(int,int), int> cellMembership;
         public int ColsCount { get; set; }
         public int RowsCount { get; set; }
 
@@ -20,7 +20,7 @@ namespace design_patterns
         {
             get
             {
-                int numOfMatrx = colMembership[col];
+                int numOfMatrx = cellMembership[(row,col)];
                 if (matrices[numOfMatrx].RowsCount - 1 < row)
                 {
                     return 0;
@@ -30,42 +30,63 @@ namespace design_patterns
             }
             set
             {
-                int numOfMatrx = colMembership[col];
+                int numOfMatrx = cellMembership[(row, col)];
                 var im = matrices[numOfMatrx];
-                if (matrices[numOfMatrx].RowsCount - 1 < row)
+                if (matrices[numOfMatrx].RowsCount < row)
                 {
                     throw new Exception("запрос не соответствует существующему элементу!");
                 }
                 im[row, col] = value;
             }
         }
-        public Vertical_Matrices()
+        public VerticalMatrices()
         {
-            colMembership = new Dictionary<int, int>();
+            cellMembership = new Dictionary<(int,int), int>();
             matrices = new List<IMatrix>();
         }
         public void AddMatrix(IMatrix matrx)
         {
             matrices.Add(matrx);
-            RowsCount += matrx.RowsCount;
 
-            for (int i = ColsCount; i < matrx.ColsCount; i++)
+            if (ColsCount < matrx.ColsCount)
             {
-                colMembership.Add(i, matrices.Count - 1);
-                ColsCount += i;
+                int addCols = matrx.ColsCount - ColsCount;
+
+                if (addCols < 0) { addCols *= -1; }
+
+                ColsCount += addCols;
+            }
+
+            for (int i = 0; i < matrx.ColsCount; i++)
+            {
+                for (int j = 0; j < matrx.RowsCount; j++)
+                {
+                    cellMembership[(RowsCount, i)] = matrices.Count - 1;
+                    RowsCount += 1;
+                }
             }
         }
         public void AddTransposeMatrix(IMatrix matrx)
         {
-            matrx = new Transpose_Decorator(matrx);
-            matrices.Add(matrx);
+            var matrxTr = new TransposeDecorator(matrx);
+            matrices.Add(matrxTr);
 
-            RowsCount += matrx.RowsCount;
-
-            for (int i = ColsCount; i < matrx.ColsCount; i++)
+            if (ColsCount < matrx.ColsCount)
             {
-                colMembership.Add(i, matrices.Count - 1);
-                ColsCount += i;
+                int addCols = matrx.ColsCount - ColsCount;
+
+                if (addCols < 0) { addCols *= -1; }
+
+                ColsCount += addCols;
+            }
+
+            for (int i = 0; i < matrxTr.ColsCount; i++)
+            {
+                for (int j = RowsCount; j < matrxTr.RowsCount; j++)
+                {
+                    cellMembership[(j, i)] = matrices.Count - 1;
+                    RowsCount += 1;
+                }
             }
         }
         public void Draw()

@@ -63,34 +63,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Drawer.cs" />
-    <Compile Include="FormDraw.cs">
+    <Compile Include="Visual\Drawer.cs" />
+    <Compile Include="Forms\FormDraw.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDraw.Designer.cs">
+    <Compile Include="Forms\FormDraw.Designer.cs">
       <DependentUpon>FormDraw.cs</DependentUpon>
     </Compile>
-    <Compile Include="HorizontalMatrices.cs" />
-    <Compile Include="IDrawable.cs" />
-    <Compile Include="MenuForm.cs">
+    <Compile Include="Composite\HorizontalMatrices.cs" />
+    <Compile Include="Visual\IDrawable.cs" />
+    <Compile Include="Forms\MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuForm.Designer.cs">
+    <Compile Include="Forms\MenuForm.Designer.cs">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="IMatrix.cs" />
-    <Compile Include="IVector.cs" />
-    <Compile Include="Renumbering_Decorator.cs" />
-    <Compile Include="Transpose_Decorator.cs" />
-    <Compile Include="Vertical_Matrices.cs" />
-    <Compile Include="Visualisation.cs" />
-    <Compile Include="MatrixInitiator.cs" />
-    <Compile Include="MatrixStatistics.cs" />
+    <Compile Include="Matrix\IMatrix.cs" />
+    <Compile Include="Vector\IVector.cs" />
+    <Compile Include="Decorators\RenumberingDecorator.cs" />
+    <Compile Include="Decorators\TransposeDecorator.cs" />
+    <Compile Include="Composite\VerticalMatrices.cs" />
+    <Compile Include="Visual\Visualisation.cs" />
+    <Compile Include="MatrixManipulation\MatrixInitiator.cs" />
+    <Compile Include="MatrixManipulation\MatrixStatistics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegularVector.cs" />
-    <Compile Include="Matrix.cs" />
-    <Compile Include="SparseVector.cs" />
+    <Compile Include="Vector\RegularVector.cs" />
+    <Compile Include="Matrix\Matrix.cs" />
+    <Compile Include="Vector\SparseVector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -108,12 +108,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FormDraw.resx">
+    <EmbeddedResource Include="Forms\FormDraw.resx">
       <DependentUpon>FormDraw.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuForm.resx">
+    <EmbeddedResource Include="Forms\MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
