@@ -5,8 +5,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{5DEC2822-C73B-4CE2-99AE-FD2E67F44537}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>design_patterns_1</RootNamespace>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>design_patterns</RootNamespace>
     <AssemblyName>design_patterns_1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -50,6 +50,7 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -63,6 +64,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\CommandHandler.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\InitApplication.cs" />
+    <Compile Include="Command\SetValueInMatrix.cs" />
+    <Compile Include="Matrix\RegularMatrix.cs" />
+    <Compile Include="Matrix\SparseMatrix.cs" />
+    <Compile Include="Memento\IMementable.cs" />
+    <Compile Include="Memento\IMemento.cs" />
+    <Compile Include="Memento\Mementable.cs" />
+    <Compile Include="Memento\Memento.cs" />
+    <Compile Include="Memento\MementoComposite.cs" />
+    <Compile Include="Visual\IVisualisation.cs" />
     <Compile Include="Visual\Drawer.cs" />
     <Compile Include="Forms\FormDraw.cs">
       <SubType>Form</SubType>
@@ -83,14 +96,15 @@
     <Compile Include="Decorators\RenumberingDecorator.cs" />
     <Compile Include="Decorators\TransposeDecorator.cs" />
     <Compile Include="Composite\VerticalMatrices.cs" />
-    <Compile Include="Visual\Visualisation.cs" />
+    <Compile Include="Visual\VisualInConsole.cs" />
     <Compile Include="MatrixManipulation\MatrixInitiator.cs" />
     <Compile Include="MatrixManipulation\MatrixStatistics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vector\RegularVector.cs" />
-    <Compile Include="Matrix\Matrix.cs" />
+    <Compile Include="Matrix\AMatrix.cs" />
     <Compile Include="Vector\SparseVector.cs" />
+    <Compile Include="Visual\VisualInGraphic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

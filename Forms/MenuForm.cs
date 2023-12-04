@@ -72,6 +72,11 @@ namespace design_patterns
 
         private void buttonRestore_Click(object sender, EventArgs e)
         {
+            buttonRestore.Enabled = false;
+            buttonRestore.BackColor = Color.GhostWhite;
+            buttonRenum.Enabled = true;
+            buttonRenum.BackColor = Color.LightSteelBlue;
+
             matrx = matrx.ReturnBase();
         }
 
@@ -79,7 +84,29 @@ namespace design_patterns
         {
             //декорирование 2 раза
             //matrx = new Renumbering_Decorator(new Renumbering_Decorator(matrx));
+
+            buttonRenum.Enabled = false;
+            buttonRenum.BackColor = Color.GhostWhite;
+            buttonRestore.Enabled = true;
+            buttonRestore.BackColor = Color.LightSteelBlue;
+
             matrx = new RenumberingDecorator(matrx);
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            buttonEdit.Enabled = false;
+            buttonEdit.BackColor = Color.GhostWhite;
+            buttonUndo.Enabled = true;
+            buttonUndo.BackColor = Color.LightSteelBlue;
+        }
+
+        private void buttonUndo_Click(object sender, EventArgs e)
+        {
+            buttonUndo.Enabled = false;
+            buttonUndo.BackColor = Color.GhostWhite;
+            buttonEdit.Enabled = true;
+            buttonEdit.BackColor = Color.LightSteelBlue;
         }
     }
 }

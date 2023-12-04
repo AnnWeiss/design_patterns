@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace design_patterns
 {
-    abstract class SomeMatrix : IMatrix, IDrawable
+    abstract class ASomeMatrix : IMatrix, IDrawable
     {
         protected IVector[] vectors;
         public IVisualisation Visualisation { get; set; }
@@ -17,7 +17,7 @@ namespace design_patterns
             get => vectors[row][col]; 
             set => vectors[row][col] = value;
         }
-        public SomeMatrix(int rows, int cols, IVisualisation visualisation)
+        public ASomeMatrix(int rows, int cols, IVisualisation visualisation)
         {
             ColsCount = cols;
             RowsCount = rows;
@@ -37,15 +37,5 @@ namespace design_patterns
         {
             return this;
         }
-    }
-    class RegularMatrix : SomeMatrix
-    {
-        public RegularMatrix(int rows, int cols, IVisualisation visualisation) : base(rows, cols, visualisation) { }
-        public override IVector create(int size) => new RegularVector(size);
-    }
-    class SparseMatrix : SomeMatrix
-    {
-        public SparseMatrix(int rows, int cols, IVisualisation visualisation) : base(rows, cols, visualisation) { }
-        public override IVector create(int size) => new SparseVector(size);
     }
 }

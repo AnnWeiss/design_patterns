@@ -40,10 +40,14 @@ namespace design_patterns
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonRestore = new System.Windows.Forms.Button();
             this.buttonRenum = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.buttonUndo = new System.Windows.Forms.Button();
             this.groupBoxMatrx.SuspendLayout();
             this.groupBoxBorder.SuspendLayout();
             this.groupBoxView.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxMatrx
@@ -87,7 +91,7 @@ namespace design_patterns
             this.groupBoxBorder.BackColor = System.Drawing.Color.GhostWhite;
             this.groupBoxBorder.Controls.Add(this.checkBox1);
             this.groupBoxBorder.ForeColor = System.Drawing.Color.Black;
-            this.groupBoxBorder.Location = new System.Drawing.Point(398, 45);
+            this.groupBoxBorder.Location = new System.Drawing.Point(385, 45);
             this.groupBoxBorder.Name = "groupBoxBorder";
             this.groupBoxBorder.Size = new System.Drawing.Size(296, 142);
             this.groupBoxBorder.TabIndex = 1;
@@ -153,7 +157,8 @@ namespace design_patterns
             // 
             // buttonRestore
             // 
-            this.buttonRestore.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonRestore.BackColor = System.Drawing.Color.GhostWhite;
+            this.buttonRestore.Enabled = false;
             this.buttonRestore.Location = new System.Drawing.Point(52, 100);
             this.buttonRestore.Name = "buttonRestore";
             this.buttonRestore.Size = new System.Drawing.Size(167, 45);
@@ -173,12 +178,48 @@ namespace design_patterns
             this.buttonRenum.UseVisualStyleBackColor = false;
             this.buttonRenum.Click += new System.EventHandler(this.buttonRenum_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.GhostWhite;
+            this.groupBox2.Controls.Add(this.buttonUndo);
+            this.groupBox2.Controls.Add(this.buttonEdit);
+            this.groupBox2.Location = new System.Drawing.Point(710, 43);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(252, 183);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Изменение:";
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonEdit.Location = new System.Drawing.Point(66, 38);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(124, 50);
+            this.buttonEdit.TabIndex = 0;
+            this.buttonEdit.Text = "Изменить";
+            this.buttonEdit.UseVisualStyleBackColor = false;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // buttonUndo
+            // 
+            this.buttonUndo.BackColor = System.Drawing.Color.GhostWhite;
+            this.buttonUndo.Enabled = false;
+            this.buttonUndo.Location = new System.Drawing.Point(66, 114);
+            this.buttonUndo.Name = "buttonUndo";
+            this.buttonUndo.Size = new System.Drawing.Size(124, 50);
+            this.buttonUndo.TabIndex = 1;
+            this.buttonUndo.Text = "Отменить";
+            this.buttonUndo.UseVisualStyleBackColor = false;
+            this.buttonUndo.Click += new System.EventHandler(this.buttonUndo_Click);
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(812, 433);
+            this.ClientSize = new System.Drawing.Size(1005, 433);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxView);
             this.Controls.Add(this.groupBoxBorder);
@@ -192,6 +233,7 @@ namespace design_patterns
             this.groupBoxBorder.PerformLayout();
             this.groupBoxView.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -209,5 +251,8 @@ namespace design_patterns
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonRestore;
         private System.Windows.Forms.Button buttonRenum;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button buttonUndo;
+        private System.Windows.Forms.Button buttonEdit;
     }
 }
