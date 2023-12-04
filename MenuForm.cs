@@ -67,10 +67,8 @@ namespace design_patterns
         private void buttonRenum_Click(object sender, EventArgs e)
         {
             //декорирование 2 раза
-            matrx = new Renumbering_Decorator(new Renumbering_Decorator(matrx));
-            //
-            //matrx.Draw();
-            matrx = matrx.ReturnBase();
+            //matrx = new Renumbering_Decorator(new Renumbering_Decorator(matrx));
+            matrx = new Renumbering_Decorator(matrx);
         }
     }
 }

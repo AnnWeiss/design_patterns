@@ -26,7 +26,7 @@ namespace design_patterns
             {
                 vectors[i] = create(cols);
             }
-            this.Visualisation = visualisation;
+            Visualisation = visualisation;
         }
         public abstract IVector create(int size);
         public void Draw()

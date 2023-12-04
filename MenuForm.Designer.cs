@@ -38,8 +38,8 @@ namespace design_patterns
             this.buttonGraphic = new System.Windows.Forms.Button();
             this.buttonCons = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonRenum = new System.Windows.Forms.Button();
             this.buttonRestore = new System.Windows.Forms.Button();
+            this.buttonRenum = new System.Windows.Forms.Button();
             this.groupBoxMatrx.SuspendLayout();
             this.groupBoxBorder.SuspendLayout();
             this.groupBoxView.SuspendLayout();
@@ -151,25 +151,27 @@ namespace design_patterns
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Декорирование";
             // 
-            // buttonRenum
-            // 
-            this.buttonRenum.Location = new System.Drawing.Point(52, 37);
-            this.buttonRenum.Name = "buttonRenum";
-            this.buttonRenum.Size = new System.Drawing.Size(167, 45);
-            this.buttonRenum.TabIndex = 0;
-            this.buttonRenum.Text = "Перенумеровать";
-            this.buttonRenum.UseVisualStyleBackColor = true;
-            this.buttonRenum.Click += new System.EventHandler(this.buttonRenum_Click);
-            // 
             // buttonRestore
             // 
+            this.buttonRestore.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonRestore.Location = new System.Drawing.Point(52, 100);
             this.buttonRestore.Name = "buttonRestore";
             this.buttonRestore.Size = new System.Drawing.Size(167, 45);
             this.buttonRestore.TabIndex = 1;
             this.buttonRestore.Text = "Восстановить";
-            this.buttonRestore.UseVisualStyleBackColor = true;
+            this.buttonRestore.UseVisualStyleBackColor = false;
             this.buttonRestore.Click += new System.EventHandler(this.buttonRestore_Click);
+            // 
+            // buttonRenum
+            // 
+            this.buttonRenum.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonRenum.Location = new System.Drawing.Point(52, 37);
+            this.buttonRenum.Name = "buttonRenum";
+            this.buttonRenum.Size = new System.Drawing.Size(167, 45);
+            this.buttonRenum.TabIndex = 0;
+            this.buttonRenum.Text = "Перенумеровать";
+            this.buttonRenum.UseVisualStyleBackColor = false;
+            this.buttonRenum.Click += new System.EventHandler(this.buttonRenum_Click);
             // 
             // MenuForm
             // 

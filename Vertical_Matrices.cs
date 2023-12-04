@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace design_patterns
 {
-    class HorizontalMatrices : IMatrix
+    class Vertical_Matrices : IMatrix
     {
         List<IMatrix> matrices;
         public IVisualisation Visualisation { get; set; }
@@ -39,7 +39,7 @@ namespace design_patterns
                 im[row, col] = value;
             }
         }
-        public HorizontalMatrices()
+        public Vertical_Matrices()
         {
             colMembership = new Dictionary<int, int>();
             matrices = new List<IMatrix>();
@@ -55,6 +55,17 @@ namespace design_patterns
                 ColsCount += i;
             }
         }
+        public void AddTransposeMatrix(IMatrix matrx)
+        {
+            RowsCount += matrx.RowsCount;
+            for (int i = ColsCount; i < matrx.ColsCount; i++)
+            {
+                colMembership.Add(i, matrices.Count - 1);
+                ColsCount += i;
+            }
+            matrx = new Transpose_Decorator(matrx);
+            matrices.Add(matrx);
+        }
         public void Draw()
         {
             Drawer.DrawMatrixAlgo(Visualisation, this);
@@ -62,16 +73,6 @@ namespace design_patterns
         public IMatrix ReturnBase()
         {
             return this;
-        }
-        public int GetMaxRows()
-        {
-            var maxRows = matrices.Max(r => r.RowsCount);
-            return maxRows;
-        }
-        public int GetSumCols()
-        {
-            var sumCols = matrices.Sum(r => r.ColsCount);
-            return sumCols;
         }
     }
 }

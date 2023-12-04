@@ -9,10 +9,12 @@ namespace design_patterns
     class Renumbering_Decorator : IMatrix 
     {
         IMatrix matrix;
+        Random rnd;
+
         int[] rows, cols;
-        public IVisualisation Visualisation { get => Visualisation; set => Visualisation = value; }
-        public int ColsCount { get => ColsCount; }
-        public int RowsCount { get => RowsCount; }
+        public IVisualisation Visualisation { get; set; }
+        public int ColsCount { get; }
+        public int RowsCount { get; }
         public int this[int j, int i]
         {
             get => matrix[rows[j], cols[i]];
@@ -22,7 +24,14 @@ namespace design_patterns
         {
             cols = new int[matrix.ColsCount];
             rows = new int[matrix.RowsCount];
+
+            ColsCount = matrix.ColsCount;
+            RowsCount = matrix.RowsCount;
+
             this.matrix = matrix;
+
+            rnd = new Random();
+
             for (int i = 0; i < rows.Length; i++)
             {
                 rows[i] = i;
@@ -31,33 +40,36 @@ namespace design_patterns
             {
                 cols[i] = i;
             }
+
             RenumberRows();
             RenumberCols();
         }
         private void RenumberRows()
         {
-            Random rnd = new Random();
             int first = rnd.Next(0, rows.Length - 1);
             int second = rnd.Next(0, rows.Length - 1);
+
             while (first == second)
             {
                 first = rnd.Next(0, rows.Length - 1);
                 second = rnd.Next(0, rows.Length - 1);
             }
+
             int tmp = rows[first];
             rows[first] = rows[second];
             rows[second] = tmp;
         }
         private void RenumberCols()
         {
-            Random rnd = new Random();
             int first = rnd.Next(0, rows.Length - 1);
             int second = rnd.Next(0, rows.Length - 1);
+
             while (first == second)
             {
                 first = rnd.Next(0, rows.Length - 1);
                 second = rnd.Next(0, rows.Length - 1);
             }
+
             int tmp = cols[first];
             cols[first] = cols[second];
             cols[second] = tmp;

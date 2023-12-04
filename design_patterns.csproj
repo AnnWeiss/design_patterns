@@ -81,6 +81,8 @@
     <Compile Include="IMatrix.cs" />
     <Compile Include="IVector.cs" />
     <Compile Include="Renumbering_Decorator.cs" />
+    <Compile Include="Transpose_Decorator.cs" />
+    <Compile Include="Vertical_Matrices.cs" />
     <Compile Include="Visualisation.cs" />
     <Compile Include="MatrixInitiator.cs" />
     <Compile Include="MatrixStatistics.cs" />
