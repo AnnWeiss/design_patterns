@@ -6,24 +6,39 @@ using System.Threading.Tasks;
 
 namespace design_patterns
 {
+    
     class SetValueInMatrix : ICommand
     {
-        IMatrix matrx;
         int row, col, val;
-        public SetValueInMatrix(IMatrix matrx, int row, int col, int val)
+
+        protected
+        AMatrix receiver;
+        public SetValueInMatrix(AMatrix matrx, int row, int col, int val)
         {
-            this.matrx = matrx;
+            receiver = matrx;
             this.col = col;
             this.row = row;
             this.val = val;
         }
         public void Execute()
         {
-            matrx[row, col] = val;
+            //receiver[row, col] = val;
+            //mementos[numCommands] = receiver.CreateMemento(i,j);
+            //commands[numCommands] = this;
+            //if (numCommands > highWater)
+            //    highWater = numCommands;
+            //numCommands++;
+            
         }
         public void Undo()
         {
-            //blyaaa a kak kakat'
+           // if (numCommands == 0)
+           // {
+           //     return;
+           // }
+           // receiver.ReinstateMemento() = commands[numCommands - 1];
+           //(mementos[numCommands - 1]);
+           // _numCommands--;
         }
     }
 }

@@ -19,51 +19,33 @@ namespace design_patterns
         }
         private void radioButtonRegular_CheckedChanged(object sender, EventArgs e)
         {
-            matrx = new RegularMatrix(6, 6, new VisualInConsole());
+            matrx = new RegularMatrix(6, 6);
             MatrixInitiator.FillMatrix(matrx, matrx.RowsCount * matrx.ColsCount, 20);
         }
         private void radioButtonSparse_CheckedChanged(object sender, EventArgs e)
         {
-            matrx = new SparseMatrix(6, 6,new VisualInConsole());
+            matrx = new SparseMatrix(6, 6);
             MatrixInitiator.FillMatrix(matrx, 5, 20);
         }
         private void MenuForm_Load(object sender, EventArgs e) { }
         private void buttonCons_Click(object sender, EventArgs e)
         {
-            RegularMatrix matrx1 = new RegularMatrix(1, 3, new VisualInConsole());
-            MatrixInitiator.FillMatrix(matrx, matrx.RowsCount * matrx.ColsCount, 20);
+            //RegularMatrix matrx1 = new RegularMatrix(1, 3, new VisualInConsole());
+            //MatrixInitiator.FillMatrix(matrx, matrx.RowsCount * matrx.ColsCount, 20);
 
-            RegularMatrix matrx2 = new RegularMatrix(2, 2, new VisualInConsole());
-            MatrixInitiator.FillMatrix(matrx, matrx.RowsCount * matrx.ColsCount, 20);
+            //RegularMatrix matrx2 = new RegularMatrix(2, 2, new VisualInConsole());
+            //MatrixInitiator.FillMatrix(matrx, matrx.RowsCount * matrx.ColsCount, 20);
 
-            VerticalMatrices vm = new VerticalMatrices();
-            vm.AddTransposeMatrix(matrx1);
-            vm.AddMatrix(matrx2);
-            vm[0, 0] = 1;
+            //VerticalMatrices vm = new VerticalMatrices();
+            //vm.AddTransposeMatrix(matrx1);
+            //vm.AddMatrix(matrx2);
+            //vm[0, 0] = 1;
+            Drawer.DrawMatrixAlgo(new VisualInConsole(), matrx);
 
-            matrx.Visualisation = new VisualInConsole(false, true);
-            if (checkBox1.Checked)
-            {
-                matrx.Visualisation = new VisualInConsole(true,true);
-            }
-            else
-            {
-                matrx.Visualisation = new VisualInConsole(false, true);
-            }
-            matrx.Draw();
         }
         private void buttonGraphic_Click(object sender, EventArgs e)
         {
-            matrx.Visualisation = new VisualInGraphic(false, true);
-            if (checkBox1.Checked)
-            {
-                matrx.Visualisation = new VisualInGraphic(true, true);
-            }
-            else
-            {
-                matrx.Visualisation = new VisualInGraphic(false, true);
-            }
-            matrx.Draw();
+            Drawer.DrawMatrixAlgo(new VisualInGraphic(), matrx);
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -77,7 +59,9 @@ namespace design_patterns
             buttonRenum.Enabled = true;
             buttonRenum.BackColor = Color.LightSteelBlue;
 
-            matrx = matrx.ReturnBase();
+            matrx = new RenumberingDecorator(matrx);
+            matrx = (matrx as RenumberingDecorator).ReturnBase();
+
         }
 
         private void buttonRenum_Click(object sender, EventArgs e)

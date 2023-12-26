@@ -12,7 +12,6 @@ namespace design_patterns
         Random rnd;
 
         int[] rows, cols;
-        public IVisualisation Visualisation { get; set; }
         public int ColsCount { get; }
         public int RowsCount { get; }
         public int this[int j, int i]
@@ -73,10 +72,6 @@ namespace design_patterns
             int tmp = cols[first];
             cols[first] = cols[second];
             cols[second] = tmp;
-        }
-        public void Draw()
-        {
-            Drawer.DrawMatrixAlgo(Visualisation, this);
         }
         public IMatrix ReturnBase()
         {

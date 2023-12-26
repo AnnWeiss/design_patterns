@@ -8,6 +8,6 @@ namespace design_patterns
 {
     interface IMemento
     {
-        void Restore();
+        void RestoreState(Memento memento);
     }
 }

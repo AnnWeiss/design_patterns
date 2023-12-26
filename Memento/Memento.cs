@@ -8,14 +8,14 @@ namespace design_patterns
 {
     class Memento : IMemento
     {
-        public string State { get; set; }
-        Mementable mementable;
-        public Memento(string state)
+        public int State { get; set; }
+        public Memento(int state)
         {
             State = state;
         }
-        public void Restore()
+        public void RestoreState(Memento memento)
         {
+            State = memento.State;
         }
     }
 }

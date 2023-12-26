@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace design_patterns
 {
-    class RegularMatrix : ASomeMatrix
+    class RegularMatrix : AMatrix
     {
-        public RegularMatrix(int rows, int cols, IVisualisation visualisation) : base(rows, cols, visualisation) { }
+        public RegularMatrix(int rows, int cols) : base(rows, cols) { }
         public override IVector create(int size) => new RegularVector(size);
     }
 }

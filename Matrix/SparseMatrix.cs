@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace design_patterns
 {
-    class SparseMatrix : ASomeMatrix
+    class SparseMatrix : AMatrix
     {
-        public SparseMatrix(int rows, int cols, IVisualisation visualisation) : base(rows, cols, visualisation) { }
+        public SparseMatrix(int rows, int cols) : base(rows, cols) { }
         public override IVector create(int size) => new SparseVector(size);
     }
 }

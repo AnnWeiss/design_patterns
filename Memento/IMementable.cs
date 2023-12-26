@@ -8,6 +8,6 @@ namespace design_patterns
 {
     interface IMementable
     {
-        void CreateMemo();
+        Memento CreateMemento(int i, int j);
     }
 }

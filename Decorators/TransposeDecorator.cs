@@ -9,7 +9,6 @@ namespace design_patterns
     class TransposeDecorator : IMatrix
     {
         IMatrix matrix;
-        public IVisualisation Visualisation { get; set; }
         public int ColsCount { get; }
         public int RowsCount { get; }
         public int this[int j, int i]
@@ -22,10 +21,6 @@ namespace design_patterns
             this.matrix = matrix;
             ColsCount = matrix.RowsCount;
             RowsCount = matrix.ColsCount;
-        }
-        public void Draw()
-        {
-            Drawer.DrawMatrixAlgo(Visualisation, this);
         }
         public IMatrix ReturnBase()
         {

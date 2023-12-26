@@ -8,29 +8,28 @@ namespace design_patterns
 {
     class CommandHandler
     {
-        int index;
-        List<ICommand> commands = new List<ICommand>();
+        Stack<ICommand> commands = new Stack<ICommand>();
+        private static CommandHandler instance;
+        private CommandHandler() { }
+
+        public static CommandHandler GetInstance()
+        {
+            if (instance == null) { instance = new CommandHandler(); }
+            return instance;
+        }
 
         public void AddCommand(ICommand command)
         {
-            if(index < commands.Count)
-            {
-                commands.RemoveRange(index, commands.Count - index);
-            }
-            commands.Add(command);
+            commands.Push(command);
             command.Execute();
-            index++;
         }
 
         public void UndoCommand()
         {
             if (commands.Count == 0) { return; }
 
-            if (index > 0)
-            {
-                commands[index - 1].Undo();
-                index--;
-            }
+            ICommand command = commands.Pop();
+            command.Undo();
         }
     }
 }

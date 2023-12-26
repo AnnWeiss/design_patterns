@@ -21,12 +21,5 @@ namespace design_patterns
             get;
             set;
         }
-        IVisualisation Visualisation
-        {
-            get;
-            set;
-        }
-        void Draw();
-        IMatrix ReturnBase();
     }
 }

@@ -9,7 +9,6 @@ namespace design_patterns
     class VerticalMatrices : IMatrix
     {
         List<IMatrix> matrices;
-        public IVisualisation Visualisation { get; set; }
 
         //принадлежность ячейки к определенной матрице
         Dictionary<(int,int), int> cellMembership;
@@ -88,14 +87,6 @@ namespace design_patterns
                     RowsCount += 1;
                 }
             }
-        }
-        public void Draw()
-        {
-            Drawer.DrawMatrixAlgo(Visualisation, this);
-        }
-        public IMatrix ReturnBase()
-        {
-            return this;
         }
         public int GetMaxRows()
         {

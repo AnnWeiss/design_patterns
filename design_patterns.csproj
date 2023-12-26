@@ -72,9 +72,7 @@
     <Compile Include="Matrix\SparseMatrix.cs" />
     <Compile Include="Memento\IMementable.cs" />
     <Compile Include="Memento\IMemento.cs" />
-    <Compile Include="Memento\Mementable.cs" />
     <Compile Include="Memento\Memento.cs" />
-    <Compile Include="Memento\MementoComposite.cs" />
     <Compile Include="Visual\IVisualisation.cs" />
     <Compile Include="Visual\Drawer.cs" />
     <Compile Include="Forms\FormDraw.cs">

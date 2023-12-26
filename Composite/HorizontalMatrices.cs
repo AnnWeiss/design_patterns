@@ -9,7 +9,6 @@ namespace design_patterns
     class HorizontalMatrices : IMatrix
     {
         List<IMatrix> matrices;
-        public IVisualisation Visualisation { get; set; }
 
         //принадлежность столбца к определенной матрице
         Dictionary<int, int> colMembership;
@@ -59,14 +58,6 @@ namespace design_patterns
                 colMembership.Add(i, matrices.Count - 1);
                 ColsCount += 1;
             }
-        }
-        public void Draw()
-        {
-            Drawer.DrawMatrixAlgo(Visualisation, this);
-        }
-        public IMatrix ReturnBase()
-        {
-            return this;
         }
         public int GetMaxRows()
         {
